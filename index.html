@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Día de las Flores Amarillas</title>
+  <link rel="icon" href="data:," />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="flowers"></canvas>
+
+  <main id="app">
+    <section id="intro" class="screen">
+      <h1>21 de septiembre</h1>
+      <p class="subtitle">Día de las Flores Amarillas, para ti, Draw 🌻</p>
+      <button id="open-letter" class="btn">Abrir mi carta 🌻</button>
+    </section>
+
+    <section id="letter" class="screen hidden">
+      <div class="paper">
+        <p id="letter-text"></p>
+        <button id="next-line" class="btn small">Sigue leyendo →</button>
+        <div id="signature" class="hidden">
+          <p class="signature-text">Con todo mi cariño,</p>
+          <p class="signature-name">Tu persona favorita</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
