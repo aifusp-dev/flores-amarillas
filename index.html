@@ -10,6 +10,13 @@
 <body>
   <canvas id="flowers"></canvas>
 
+  <audio id="bg-music" src="assets/teregalo.mp3" loop preload="auto"></audio>
+
+  <div id="music-control" class="hidden">
+    <button id="mute-toggle" class="music-btn" aria-label="Silenciar música" title="Silenciar/activar música">🔊</button>
+    <input id="volume-slider" type="range" min="0" max="1" step="0.01" value="0.4" aria-label="Volumen de la música" />
+  </div>
+
   <main id="app">
     <section id="intro" class="screen">
       <h1>21 de septiembre</h1>

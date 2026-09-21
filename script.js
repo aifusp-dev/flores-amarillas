@@ -3,7 +3,7 @@
 const LETTER_PARAGRAPHS = [
   "Hola, Draw.",
   "Hoy es 21 de septiembre, el día de las flores amarillas, y aunque la distancia siga siendo la distancia, no quería que este día pasara sin que supieras que estoy pensando en ti.",
-  "Dicen que estas flores se regalan para decir lo que a veces cuesta decir en voz alta: que alguien te quiere, que te tiene presente, que espera volver a verte pronto. Así que hoy son para ti.",
+  " Tengo entendido que las flores amarillas se dan cuando sabes que querés pasar el resto de tu vida con una persona, y por eso cada año que pasemos vas a recibir las tuyas, porque cada día reafirmo que te tengo en mi corazón. Siento que esto se queda corto con lo que siento, porque mi amor aún a la distancia es inmenso y aunque no estemos físicamente  no puedo enumerar todos los sitios en los que siento que estas conmigo.",
   "No pude tenerlas en mis manos para dártelas, pero hice esto con las mías para que al menos sepas que, aunque estemos lejos, sigues siendo de las cosas que más me importan.",
   "Gracias por aguantar la distancia conmigo, por las llamadas, por seguir eligiéndonos aunque no sea fácil. Cada día que sigo pensando en ti es un día que valió la pena.",
   "Feliz día de las flores amarillas, Draw. Cuenta los días conmigo, que pronto se acortan.",
@@ -131,6 +131,40 @@ openBtn.addEventListener("click", () => {
   introScreen.classList.add("hidden");
   letterScreen.classList.remove("hidden");
   showNextParagraph();
+  startMusic();
 });
 
 nextBtn.addEventListener("click", showNextParagraph);
+
+// === Música de fondo con control de volumen ===
+const music = document.getElementById("bg-music");
+const musicControl = document.getElementById("music-control");
+const muteToggle = document.getElementById("mute-toggle");
+const volumeSlider = document.getElementById("volume-slider");
+
+const DEFAULT_VOLUME = 0.4; // las webs suelen sonar muy fuerte, arrancamos bajo
+const savedVolume = parseFloat(localStorage.getItem("flores-volume"));
+music.volume = Number.isFinite(savedVolume) ? savedVolume : DEFAULT_VOLUME;
+volumeSlider.value = music.volume;
+updateMuteIcon();
+
+function startMusic() {
+  musicControl.classList.remove("hidden");
+  music.play().catch(() => {});
+}
+
+volumeSlider.addEventListener("input", () => {
+  music.volume = parseFloat(volumeSlider.value);
+  music.muted = music.volume === 0;
+  localStorage.setItem("flores-volume", music.volume);
+  updateMuteIcon();
+});
+
+muteToggle.addEventListener("click", () => {
+  music.muted = !music.muted;
+  updateMuteIcon();
+});
+
+function updateMuteIcon() {
+  muteToggle.textContent = music.muted || music.volume === 0 ? "🔇" : "🔊";
+}

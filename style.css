@@ -143,3 +143,32 @@ h1 {
     padding: 32px 20px;
   }
 }
+
+#music-control {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 250, 240, 0.85);
+  backdrop-filter: blur(4px);
+  padding: 8px 14px;
+  border-radius: 999px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+.music-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+#volume-slider {
+  width: 90px;
+  accent-color: var(--yellow-deep);
+}
